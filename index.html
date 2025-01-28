@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #000;
+            color: #ddd;
+        }
+
+        header {
+            background: linear-gradient(135deg, #16036a, #261c29);
+            color: #fff;
+            padding: 4rem 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-20px) translateX(20px);
+            }
+        }
+
+        header h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: #333;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #444;
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fcfcfc;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+
+        nav ul li a {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: #fefefe;
+            color: #000;
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 3rem auto;
+            background: #222;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            color: #9dac6a;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        section p, ul {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #bbb;
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #000000;
+            margin: 2rem auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        ul li:hover {
+            transform: translateY(-5px);
+        }
+
+        ul li img {
+            width: 300px;
+            height: 300px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        ul li div {
+            padding: 1rem;
+        }
+
+        ul li div h3 {
+            color: #acc77d;
+            margin-bottom: 1rem;
+        }
+
+        ul li div p {
+            color: #bbb;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skills div {
+            text-align: center;
+            background: #000000;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .skills div:hover {
+            transform: scale(1.05);
+        }
+
+        .skills img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            background: #333;
+            color: #bbb;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            font-size: 1rem;
+            border-top: 2px solid #444;
+        }
+
+        footer a {
+            color: #ff7eb3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contacts a {
+            color: #64a7c1;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contacts a:hover {
+            color: #ff5983;
+        }
+    </style>
+</head>
+<body>
+    <!-- <header> -->
+        <!-- <h1>Sharukesh's Portfolio</h1>
+    </header>
+    <nav>
+        <div class="logo">SHARUKESH</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contacts">Contact</a></li>
+        </ul>
+    </nav>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #000;
+            color: #ddd;
+        }
+
+        header {
+            background: linear-gradient(135deg, #260aa2, #261c29);
+            color: #fff;
+            padding: 4rem 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-20px) translateX(20px);
+            }
+        }
+
+        header h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #333;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #444;
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fcfcfc;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+
+        nav ul li a {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: #fefefe;
+            color: #000;
+        }
+
+        .resume-btn {
+            background: #624bc8;
+            color: #fbf9f9;
+            padding: 0.6rem 1.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .resume-btn:hover {
+            background: #b5c583;
+            transform: scale(1.05);
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 3rem auto;
+            background: #222;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            color:#624bc8;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        section p, ul {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #bbb;
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #000000;
+            margin: 2rem auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        ul li:hover {
+            transform: translateY(-5px);
+        }
+
+        ul li img {
+            width: 300px;
+            height: 300px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        ul li div {
+            padding: 1rem;
+        }
+
+        ul li div h3 {
+            color: #acc77d;
+            margin-bottom: 1rem;
+        }
+
+        ul li div p {
+            color: #bbb;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skills div {
+            text-align: center;
+            background: #000000;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .skills div:hover {
+            transform: scale(1.05);
+        }
+
+        .skills img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            background: #333;
+            color: #bbb;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            font-size: 1rem;
+            border-top: 2px solid #444;
+        }
+
+        footer a {
+            color: #ff7eb3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sharukesh's Portfolio</h1>
+    </header>
+    <nav>
+        <div class="logo">SHARUKESH</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contacts">Contact</a></li>
+        </ul>
+        <a href="asserts/resume.pdf" target="_blank" class="resume-btn">Resume</a>
+    </nav>
+    <section id="about">
+        <h2>About Me</h2>
+        <h3>I am an AI and Data Science enthusiast with a passion for turning complex problems into innovative solutions. With a strong foundation in machine learning, deep learning, and big data analytics, I strive to create impactful projects that make a difference. My journey is fueled by curiosity and a love for exploring the endless possibilities of technology. Let's build the future together!</h3>
+    </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li>
+                <img src="asserts/project1.png" alt="AI Healthcare System">
+                <div>
+                    <h3>AI Healthcare System</h3>
+                    <p>Developed an AI-powered application that utilizes natural language processing and computer vision to simplify complex medical reports. The system helps patients understand their health data better and supports doctors in presenting results efficiently. This project aims to make healthcare more accessible and user-friendly..</p>
+                </div>
+            </li>
+            <li>
+                <img src="asserts/project 2.png" alt="Time Tracking App">
+                <div>
+                    <h3>Time Tracking App</h3>
+                    <p>Built a robust time-tracking app with an automated CI/CD pipeline using Jenkins for seamless integration and deployment. The app improves team productivity by providing detailed time analytics and real-time task tracking. It ensures efficient workflows for both individuals and teams.</p>
+                </div>
+            </li>
+            <li>
+                <img src="asserts/project3.png" alt="whatsapp chat analyser">
+                <div>
+                    <h3>Whatsapp Chat Analyser</h3>
+                    <p>Built a powerful tool to analyze WhatsApp chat data with integrated sentiment analysis, providing insights into communication patterns and emotional tone. The analyzer generates visualizations such as word clouds, activity graphs, and sentiment trends. It helps users understand their messaging habits and the overall sentiment of conversations.</p>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills">
+            <div>
+                <img src="asserts/python.png" alt="Python">
+                <p>Python</p>
+            </div>
+            <div>
+                <img src="asserts/java.png" alt="Java">
+                <p>Java</p>
+            </div>
+            <div>
+                <img src="asserts/ml.png" alt="Machine Learning">
+                <p>Machine Learning</p>
+            </div>
+            <div>
+                <img src="asserts/Tableau.png" alt="Tableau">
+                <p>Tableau</p>
+            </div>
+            <div>
+                <img src="asserts/R.png" alt="R">
+                <p>R</p>
+            </div>
+            <div>
+                <img src="asserts/git.png" alt="Git">
+                <p>Git</p>
+            </div>
+            <div>
+                <img src="asserts/github.png" alt="Github">
+                <p>GitHub</p>
+            </div>
+            <div>
+                <img src="asserts/html.png" alt="HTML">
+                <p>HTML</p>
+            </div>
+            <div>
+                <img src="asserts/css.png" alt="CSS">
+                <p>CSS</p>
+            </div>
+            <div>
+                <img src="asserts/mdb.png" alt="mongodb">
+                <p>Mongodb</p>
+            </div>
+        </div>
+    </section>
+    <section id="contacts" style="color: #959ff7;">
+        <h2>Contact</h2>
+        <ul>
+            <li>
+                Email:<a href="mailto:sharuk25g@gmail.com" style="color: #ffffff;">sharuk25g@gmail.com</a>
+            </li>
+            <li>
+                Linkedin:<a href="https://www.linkedin.com/in/sharukesh-g-04518026a/"style="color: #ffffff;" >sharukesh-g</a>
+            </li>
+            <li>
+                GitHub:<a href="https://github.com/Sharukg" style="color: #ffffff;">Sharukg</a>
+            </li>
+        </ul>
+
+        <!-- <p>Email: <a href="mailto:yourname@example.com">yourname@example.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile" target="_blank">https://www.linkedin.com/in/yourprofile</a></p>
+        <p>GitHub: <a href="https://github.com/yourusername" target="_blank">//github.com/yourusername</a></p> -->
+
+    </section>
+    <footer>
+        <p>&copy; sharuk All rights reserved. Designed with <span style="color: #ff7eb3">&#9829;</span> and passion.</p>
+    </footer>
+</body>
+</html>
