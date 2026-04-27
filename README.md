@@ -3,7 +3,7 @@
 Welcome to my personal portfolio website! 🚀
 
 ## 🔗 Live Website
-[Visit My Portfolio](https://sharukg-portfolio.netlify.app/)
+[Visit My Portfolio](https://sharukg.netlify.app/)
 
 ## 📌 About Me
 I am an AI and Data Science enthusiast with a passion for solving complex problems using innovative solutions. My expertise lies in machine learning, deep learning, and big data analytics. I aim to build impactful projects that make a difference. Let's innovate together! ✨
